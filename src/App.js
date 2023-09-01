@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box, Container, ThemeProvider, Typography } from "@mui/material";
+import { Appbar } from "./components/Appbar";
+import { Banner } from "./components/Banner";
+import { AppDrawer } from "./components/Drawer";
+import { Footer } from "./components/Footer";
+import { Products } from "./components/Products";
+import { Promotions } from "./components/Promotions";
+import { SearchBox } from "./components/Search";
+import { UIProvider } from "./context/ui";
+import theme from "./styles/theme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container maxWidth="xl" sx={{ background: "#fff" }}>
+        <UIProvider>
+          <Appbar />
+          <Banner />
+          <Promotions />
+          <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
+            <Typography variant="h4">Our Products</Typography>
+          </Box>
+          <Products />
+          <Footer />
+          <AppDrawer />
+          <SearchBox />
+        </UIProvider>
+      </Container>
+    </ThemeProvider>
   );
 }
 
